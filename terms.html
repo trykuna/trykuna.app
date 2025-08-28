@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — Kuna</title>
+    <meta name="description" content="Kuna's terms of use. Understand your rights and responsibilities when using Kuna.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://trykuna.app/terms.html">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C5CE7',
+                        accent: '#00D1B2'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style>
+        .text-gradient {
+            background: linear-gradient(135deg, #6C5CE7 0%, #00D1B2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300" x-data="{ darkMode: false }" x-init="
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        darkMode = true;
+        document.documentElement.classList.add('dark');
+    }
+    
+    $watch('darkMode', value => {
+        if (value) {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        }
+    });
+">
+
+    <!-- Header -->
+    <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center">
+                        <img src="assets/kunalogo_white.png" alt="Kuna" class="h-12 w-auto">
+                    </a>
+                    <span class="text-slate-400">•</span>
+                    <span class="text-slate-600 dark:text-slate-300">Terms of Use</span>
+                </div>
+                
+                <button @click="darkMode = !darkMode" 
+                        class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                        aria-label="Toggle dark mode">
+                    <svg x-show="!darkMode" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <svg x-show="darkMode" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="prose prose-slate dark:prose-invert max-w-none">
+            <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-8">Kuna — Terms of Use</h1>
+            
+            <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">
+                <strong>Effective date:</strong> 28 August 2025
+            </p>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">1) Who we are and what this is</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">
+                    Kuna is an iOS app published by <strong>Systems Mystery Limited</strong> ("we", "us"). These Terms of Use ("Terms") govern your use of the Kuna app (the "App").
+                </p>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Kuna is an independent client for the open‑source <strong>Vikunja</strong> task platform. We are <strong>not affiliated with or endorsed by</strong> the Vikunja project or any hosting provider.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">2) Using Kuna</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    To use Kuna you must comply with these Terms and Apple's <strong>Licensed Application End User License Agreement (Apple LAEULA)</strong>, which applies by default to iOS apps. If there is a conflict, the Apple LAEULA controls for licensing matters.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">3) Accounts and access</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">
+                    Kuna does <strong>not</strong> create or host user accounts. You sign in with an account provided by <strong>your chosen Vikunja server</strong> (self‑hosted or third‑party). The <strong>terms and policies of that server</strong> apply to your account and data.
+                </p>
+                <p class="text-slate-600 dark:text-slate-400 mb-2">You are responsible for:</p>
+                <ul class="text-slate-600 dark:text-slate-400 space-y-2 list-disc ml-6">
+                    <li>ensuring you have permission to access the server;</li>
+                    <li>keeping your credentials secure (including any TOTP/2FA codes);</li>
+                    <li>the actions you take within the App.</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">4) Your data and how Kuna works</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">
+                    Kuna acts as a <strong>client</strong> to your server. Task data is requested from and written to your server under your direction. We do <strong>not</strong> operate the servers that store your content.
+                </p>
+                <p class="text-slate-600 dark:text-slate-400">
+                    The App may store a <strong>local cache</strong> on your device to improve performance and offline access. You can remove cached data by deleting the App or using in‑app options where provided. We do not receive your task data unless you separately send it to us (e.g., for support).
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">5) Calendar and notifications (optional)</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-2">If you grant permission, Kuna can:</p>
+                <ul class="text-slate-600 dark:text-slate-400 space-y-2 list-disc ml-6 mb-4">
+                    <li><strong>write read‑only events</strong> to the Apple Calendar app to mirror tasks with due dates via EventKit; and</li>
+                    <li>send <strong>local notifications</strong>.</li>
+                </ul>
+                <p class="text-slate-600 dark:text-slate-400">
+                    You can revoke these permissions at any time in iOS Settings. Calendar data created by Kuna is stored on your device/iCloud according to your Apple settings; no copies are sent to us.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">6) Payments</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Kuna includes <strong>no in‑app purchases, subscriptions, or paid features</strong>. If you pay a third party to host your Vikunja server, that is outside the App and governed by that third party's terms.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">7) Acceptable use</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-2">You agree not to misuse the App, including by:</p>
+                <ul class="text-slate-600 dark:text-slate-400 space-y-2 list-disc ml-6">
+                    <li>violating laws or third‑party rights;</li>
+                    <li>attempting to access servers or accounts without authorization;</li>
+                    <li>introducing malware or interfering with networks.</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">8) Third‑party services</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Your use of Vikunja servers and any hosting provider is subject to their own terms and privacy notices. We are not responsible for those services, their availability, or their security.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">9) No warranty</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    The App is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind. To the maximum extent permitted by law, we disclaim implied warranties of merchantability, fitness for a particular purpose, and non‑infringement.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">10) Limitation of liability</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    To the maximum extent permitted by law, Systems Mystery Limited will <strong>not be liable</strong> for indirect, incidental, special, consequential, or punitive damages, or any loss of data, profits, or revenues, arising from your use of the App. Our aggregate liability for any claims relating to the App will not exceed <strong>£50</strong>.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">11) Suspension or termination</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    We may suspend or end your ability to use the App if you violate these Terms or if continued operation would pose risk. You may stop using the App at any time by uninstalling it.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">12) Changes to the App or these Terms</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    We may update the App and these Terms from time to time. Material changes will be reflected by updating the "Effective date" above. Continued use after changes means you accept the new Terms.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">13) Governing law</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    These Terms are governed by the laws of <strong>England and Wales</strong>, and the courts of England and Wales will have exclusive jurisdiction (without regard to conflict‑of‑laws principles).
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">14) Contact</h2>
+                <p class="text-slate-600 dark:text-slate-400 mb-4"><strong>Richard Annand</strong></p>
+                <p class="text-slate-600 dark:text-slate-400 mb-4">
+                    Support: <a href="https://github.com/trykuna" class="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">https://github.com/trykuna</a>
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">15) Privacy</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    For how we handle analytics, permissions, and other personal data, see the <strong><a href="privacy.html" class="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Kuna Privacy Policy</a></strong>.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">16) Miscellaneous</h2>
+                <p class="text-slate-600 dark:text-slate-400">
+                    If any provision of these Terms is found unenforceable, the rest remains in effect. These Terms constitute the entire agreement between you and us regarding the App.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-700 mt-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <span class="font-semibold text-slate-700 dark:text-slate-300">Kuna</span>
+                <div class="flex items-center space-x-6 text-sm text-slate-600 dark:text-slate-400">
+                    <a href="index.html" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Home</a>
+                    <a href="privacy.html" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Privacy</a>
+                    <a href="mailto:hello@trykuna.app" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
