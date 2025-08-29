@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuna — task management that just clicks</title>
     <meta name="description" content="A privacy-first iOS app for effortless task management. Built to sync with your calendar and powered by Vikunja.">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://trykuna.app/">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Kuna — task management that just clicks">
     <meta property="og:description" content="A privacy-first iOS app for effortless task management. Built to sync with your calendar and powered by Vikunja.">
@@ -16,28 +16,28 @@
     <meta property="og:url" content="https://trykuna.app/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Kuna">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kuna — task management that just clicks">
     <meta name="twitter:description" content="A privacy-first iOS app for effortless task management. Built to sync with your calendar and powered by Vikunja.">
     <meta name="twitter:image" content="https://trykuna.app/assets/og-image.png">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
+            // darkMode removed
             theme: {
                 extend: {
                     colors: {
@@ -53,10 +53,10 @@
             }
         }
     </script>
-    
+
     <!-- Alpine.js -->
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -71,7 +71,7 @@
         ]
     }
     </script>
-    
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -80,7 +80,7 @@
         "url": "https://trykuna.app/"
     }
     </script>
-    
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -96,7 +96,7 @@
         }
     }
     </script>
-    
+
     <!-- Custom Styles -->
     <style>
         @media (prefers-reduced-motion: reduce) {
@@ -111,86 +111,66 @@
                 transition: none !important;
             }
         }
-        
+
         .glassmorphism {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.1);
         }
-        
+
         .dark .glassmorphism {
             background: rgba(0, 0, 0, 0.2);
         }
-        
+
         .gradient-primary {
             background: linear-gradient(135deg, #6C5CE7 0%, #A29BFE 100%);
         }
-        
+
         .gradient-accent {
             background: linear-gradient(135deg, #00D1B2 0%, #55EFC4 100%);
         }
-        
+
         .text-gradient {
             background: linear-gradient(135deg, #6C5CE7 0%, #00D1B2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .card-hover {
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
+
         .card-hover:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
+
         .dark .card-hover:hover {
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
         }
-        
+
         /* Carousel styles */
         .carousel-container {
             scroll-behavior: smooth;
         }
-        
+
         .carousel-container::-webkit-scrollbar {
             display: none;
         }
-        
+
         .carousel-container {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
 </head>
-<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300" x-data="{ darkMode: false, mobileMenuOpen: false }" x-init="
-    // Initialize dark mode
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        darkMode = true;
-        document.documentElement.classList.add('dark');
-    } else {
-        darkMode = false;
-        document.documentElement.classList.remove('dark');
-    }
-    
-    // Watch for changes
-    $watch('darkMode', value => {
-        if (value) {
-            document.documentElement.classList.add('dark');
-            localStorage.theme = 'dark';
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.theme = 'light';
-        }
-    });
-">
+<body class="bg-white text-slate-900" x-data="{ mobileMenuOpen: false }">
 
     <!-- Header -->
-    <header class="fixed top-0 w-full z-50 transition-all duration-300" 
+    <header class="fixed top-0 w-full z-50 transition-all duration-300"
             x-data="{ scrolled: false }"
             x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 20)"
-            :class="scrolled ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700' : 'bg-transparent'">
+            :class="scrolled ? 'bg-white/95 backdrop-blur-sm border-b border-slate-200' : 'bg-transparent'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16 lg:h-20">
                 <!-- Logo -->
@@ -199,34 +179,23 @@
                         <img src="assets/logo.png" alt="Kuna" class="h-12 w-auto">
                     </a>
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#features" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Features</a>
-                    <a href="#changelog" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Changelog</a>
-                    <a href="#faq" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">FAQ</a>
-                    <a href="privacy.html" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Privacy</a>
-                    <a href="terms.html" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Terms</a>
-                    <a href="https://github.com/trykuna" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded" aria-label="GitHub">GitHub</a>
+                    <a href="#features" class="text-slate-600 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Features</a>
+                    <a href="#changelog" class="text-slate-600 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Changelog</a>
+                    <a href="#faq" class="text-slate-600 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">FAQ</a>
+                    <a href="privacy.html" class="text-slate-600 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Privacy</a>
+                    <a href="terms.html" class="text-slate-600 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Terms</a>
+                    <a href="https://github.com/trykuna" class="text-slate-600 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded" aria-label="GitHub">GitHub</a>
                 </nav>
-                
+
                 <!-- Dark Mode Toggle & Mobile Menu Button -->
                 <div class="flex items-center space-x-4">
-                    <!-- Dark Mode Toggle -->
-                    <button @click="darkMode = !darkMode" 
-                            class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-                            aria-label="Toggle dark mode">
-                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                        </svg>
-                        <svg x-show="darkMode" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                    </button>
-                    
+
                     <!-- Mobile Menu Button -->
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" 
-                            class="md:hidden p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                    <button @click="mobileMenuOpen = !mobileMenuOpen"
+                            class="md:hidden p-2 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                             aria-label="Toggle mobile menu"
                             :aria-expanded="mobileMenuOpen">
                         <svg x-show="!mobileMenuOpen" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -239,16 +208,16 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Mobile Navigation -->
-        <div x-show="mobileMenuOpen" 
-             x-transition:enter="transition ease-out duration-200" 
-             x-transition:enter-start="opacity-0 -translate-y-1" 
-             x-transition:enter-end="opacity-100 translate-y-0" 
-             x-transition:leave="transition ease-in duration-150" 
-             x-transition:leave-start="opacity-100 translate-y-0" 
+        <div x-show="mobileMenuOpen"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-1"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-1"
-             class="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700">
+             class="md:hidden bg-white border-t border-slate-200">
             <nav class="px-4 py-4 space-y-4">
                 <a href="#features" @click="mobileMenuOpen = false" class="block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Features</a>
                 <a href="#changelog" @click="mobileMenuOpen = false" class="block text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Changelog</a>
@@ -267,32 +236,40 @@
             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
             <div class="absolute top-1/4 right-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
             <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-            
+
             <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                     <span class="text-gradient">Task management</span><br>
-                    <span class="text-slate-900 dark:text-white">that just clicks</span>
+                    <span class="text-slate-900">that just clicks</span>
                 </h1>
-                
-                <p class="text-xl lg:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+
+                <p class="text-xl lg:text-2xl text-slate-600 mb-12 max-w-3xl mx-auto leading-relaxed">
                     A privacy-first iOS app for effortless task management. Built to sync with your calendar and powered by Vikunja.
                 </p>
-                
+
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                    <a href="https://testflight.apple.com/join/8c1JPE4r" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white gradient-primary rounded-xl hover:shadow-lg hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900">
-                        Get Kuna
-                        <span class="ml-2 px-2 py-1 text-xs bg-white/20 rounded-md">TestFlight</span>
+                    <a href="https://apps.apple.com/us/app/kuna/id6751142174" class="inline-block hover:opacity-90 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary rounded">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                             alt="Download on the App Store"
+                             class="h-14">
                     </a>
-                    <a href="https://github.com/trykuna" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-slate-900 dark:text-white bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700 hover:shadow-lg hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+                    <a href="https://github.com/trykuna" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-slate-900 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 hover:shadow-lg hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-primary">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                         </svg>
                         View on GitHub
                     </a>
                 </div>
-                
+                <p class="text-sm text-slate-500 mb-8">
+                    Want to help translate Kuna?
+                    <a href="https://crwd.in/kuna-app/14b411de2052ab822f3de1198f1444c62539040" class="underline hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded">
+                        Contribute translations
+                    </a>.
+                </p>
+
+
                 <!-- Trust Row -->
-                <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-500 dark:text-slate-400">
+                <div class="flex flex-wrap justify-center items-center gap-6 text-sm text-slate-500">
                     <div class="flex items-center space-x-2">
                         <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -316,82 +293,82 @@
         </section>
 
         <!-- Features Section -->
-        <section id="features" class="py-20 lg:py-32 bg-slate-50 dark:bg-slate-800">
+        <section id="features" class="py-20 lg:py-32 bg-slate-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">
                         Features that just work
                     </h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
                         Every feature is designed to help you stay focused and get things done — without getting in your way.
                     </p>
                 </div>
-                
+
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Feature 1 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
+                    <div class="bg-white p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
                         <div class="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Calendar Sync</h3>
-                        <p class="text-slate-600 dark:text-slate-400">See tasks alongside your schedule. Kuna keeps everything in sync with your calendar.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-900">Calendar Sync</h3>
+                        <p class="text-slate-600">See tasks alongside your schedule. Kuna keeps everything in sync with your calendar.</p>
                     </div>
-                    
+
                     <!-- Feature 2 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
+                    <div class="bg-white p-8 rounded-2xl card-hover border border-slate-200 text-center">
                         <div class="w-16 h-16 gradient-accent rounded-xl flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Privacy First</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Your data stays yours. Connect to your own self-hosted Vikunja with no tracking or hidden collection.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-900">Privacy First</h3>
+                        <p class="text-slate-600">Your data stays yours. Connect to your own self-hosted Vikunja with no tracking or hidden collection.</p>
                     </div>
-                    
+
                     <!-- Feature 3 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
+                    <div class="bg-white p-8 rounded-2xl card-hover border border-slate-200 text-center">
                         <div class="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Views that fit you</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Choose how you want to see your tasks — list, grouped, or by project. Kuna adapts to the way you work.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-900">Views that fit you</h3>
+                        <p class="text-slate-600">Choose how you want to see your tasks — list, grouped, or by project. Kuna adapts to the way you work.</p>
                     </div>
-                    
+
                     <!-- Feature 4 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
+                    <div class="bg-white p-8 rounded-2xl card-hover border border-slate-200 text-center">
                         <div class="w-16 h-16 gradient-accent rounded-xl flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Background Sync</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Stay up to date automatically. Kuna keeps your tasks current across devices.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-900">Background Sync</h3>
+                        <p class="text-slate-600">Stay up to date automatically. Kuna keeps your tasks current across devices.</p>
                     </div>
-                    
+
                     <!-- Feature 5 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
+                    <div class="bg-white p-8 rounded-2xl card-hover border border-slate-200 text-center">
                         <div class="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Native iOS Experience</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Built with SwiftUI for iOS 18.4+. Feels completely at home with iOS design patterns and system features.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-900">Native iOS Experience</h3>
+                        <p class="text-slate-600">Built with SwiftUI for iOS 18.4+. Feels completely at home with iOS design patterns and system features.</p>
                     </div>
-                    
+
                     <!-- Feature 6 -->
-                    <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl card-hover border border-slate-200 dark:border-slate-700 text-center">
+                    <div class="bg-white p-8 rounded-2xl card-hover border border-slate-200 text-center">
                         <div class="w-16 h-16 gradient-accent rounded-xl flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4 text-slate-900 dark:text-white">Widgets</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Check your tasks at a glance with iOS Home Screen and Lock Screen widgets. Stay on top of your day without opening the app.</p>
+                        <h3 class="text-xl font-semibold mb-4 text-slate-900">Widgets</h3>
+                        <p class="text-slate-600">Check your tasks at a glance with iOS Home Screen and Lock Screen widgets. Stay on top of your day without opening the app.</p>
                     </div>
                 </div>
             </div>
@@ -401,14 +378,14 @@
         <section class="py-20 lg:py-32">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">
                         Powered by <span class="text-gradient">Vikunja</span>
                     </h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto">
+                    <p class="text-xl text-slate-600 max-w-4xl mx-auto">
                         Kuna is built to connect with Vikunja — the open-source, self-hosted task management platform. By pairing Kuna with your own Vikunja instance, you get:
                     </p>
                 </div>
-                
+
                 <div class="grid md:grid-cols-3 gap-8 mb-12">
                     <!-- Feature 1 -->
                     <div class="text-center">
@@ -418,10 +395,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v4" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-slate-900 dark:text-white">Projects & Tasks</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Organise everything from simple to-dos to complex projects.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-900">Projects & Tasks</h3>
+                        <p class="text-slate-600">Organise everything from simple to-dos to complex projects.</p>
                     </div>
-                    
+
                     <!-- Feature 2 -->
                     <div class="text-center">
                         <div class="w-16 h-16 gradient-accent rounded-xl flex items-center justify-center mb-6 mx-auto">
@@ -429,10 +406,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-slate-900 dark:text-white">Labels & Filters</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Categorise tasks with labels and find exactly what you need with advanced filters.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-900">Labels & Filters</h3>
+                        <p class="text-slate-600">Categorise tasks with labels and find exactly what you need with advanced filters.</p>
                     </div>
-                    
+
                     <!-- Feature 3 -->
                     <div class="text-center">
                         <div class="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-6 mx-auto">
@@ -440,11 +417,11 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-semibold mb-3 text-slate-900 dark:text-white">Collaboration</h3>
-                        <p class="text-slate-600 dark:text-slate-400">Assign tasks and share projects with your team.</p>
+                        <h3 class="text-xl font-semibold mb-3 text-slate-900">Collaboration</h3>
+                        <p class="text-slate-600">Assign tasks and share projects with your team.</p>
                     </div>
                 </div>
-                
+
                 <!-- Disclaimer -->
                 <div class="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 text-center">
                     <p class="text-sm text-slate-500 dark:text-slate-400">
@@ -458,69 +435,69 @@
         <section class="py-20 lg:py-32">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">
                         See it in <span class="text-gradient">action</span>
                     </h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto">
                         Clean, intuitive design that gets out of your way
                     </p>
                 </div>
-                
+
                 <div class="relative" x-data="{ currentSlide: 0, slides: [0, 1, 2, 3] }">
                     <!-- Screenshots Container -->
                     <div class="overflow-hidden">
-                        <div class="flex transition-transform duration-300 ease-in-out carousel-container" 
+                        <div class="flex transition-transform duration-300 ease-in-out carousel-container"
                              :style="`transform: translateX(-${currentSlide * 100}%)`">
                             <div class="w-full flex-shrink-0 flex justify-center px-4">
-                                <img src="assets/screenshots/screenshot1.png" 
-                                     alt="Kuna task management interface" 
+                                <img src="assets/screenshots/screenshot1.png"
+                                     alt="Kuna task management interface"
                                      class="max-w-sm w-full h-auto"
                                      loading="lazy">
                             </div>
                             <div class="w-full flex-shrink-0 flex justify-center px-4">
-                                <img src="assets/screenshots/screenshot2.png" 
-                                     alt="Kuna task details and editing" 
+                                <img src="assets/screenshots/screenshot2.png"
+                                     alt="Kuna task details and editing"
                                      class="max-w-sm w-full h-auto"
                                      loading="lazy">
                             </div>
                             <div class="w-full flex-shrink-0 flex justify-center px-4">
-                                <img src="assets/screenshots/screenshot3.png" 
-                                     alt="Kuna project organisation" 
+                                <img src="assets/screenshots/screenshot3.png"
+                                     alt="Kuna project organisation"
                                      class="max-w-sm w-full h-auto"
                                      loading="lazy">
                             </div>
                             <div class="w-full flex-shrink-0 flex justify-center px-4">
-                                <img src="assets/screenshots/screenshot4.png" 
-                                     alt="Kuna settings and customisation" 
+                                <img src="assets/screenshots/screenshot4.png"
+                                     alt="Kuna settings and customisation"
                                      class="max-w-sm w-full h-auto"
                                      loading="lazy">
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Navigation Arrows -->
-                    <button @click="currentSlide = currentSlide > 0 ? currentSlide - 1 : slides.length - 1" 
-                            class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+                    <button @click="currentSlide = currentSlide > 0 ? currentSlide - 1 : slides.length - 1"
+                            class="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
                             aria-label="Previous screenshot">
-                        <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
-                    
-                    <button @click="currentSlide = currentSlide < slides.length - 1 ? currentSlide + 1 : 0" 
-                            class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-lg hover:bg-white dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
+
+                    <button @click="currentSlide = currentSlide < slides.length - 1 ? currentSlide + 1 : 0"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/80 backdrop-blur-sm shadow-lg hover:bg-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
                             aria-label="Next screenshot">
-                        <svg class="w-5 h-5 text-slate-600 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
-                    
+
                     <!-- Dots -->
                     <div class="flex justify-center space-x-3 mt-8">
                         <template x-for="(slide, index) in slides" :key="index">
-                            <button @click="currentSlide = index" 
-                                    class="w-3 h-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-                                    :class="currentSlide === index ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-600'"
+                            <button @click="currentSlide = index"
+                                    class="w-3 h-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+                                    :class="currentSlide === index ? 'bg-primary' : 'bg-slate-300'"
                                     :aria-label="`Go to screenshot ${index + 1}`"></button>
                         </template>
                     </div>
@@ -532,14 +509,14 @@
         <section id="changelog" class="py-20 lg:py-32">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">
                         What's <span class="text-gradient">new</span>
                     </h2>
-                    <p class="text-xl text-slate-600 dark:text-slate-300">
+                    <p class="text-xl text-slate-600">
                         Recent updates and improvements
                     </p>
                 </div>
-                
+
                 <div class="space-y-8" x-data="{ changelog: [] }" x-init="
                     // Try to load changelog.json, fallback to hardcoded entries
                     fetch('/changelog.json')
@@ -557,15 +534,15 @@
                         });
                 ">
                     <template x-for="entry in changelog" :key="entry.version">
-                        <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700">
+                        <div class="bg-white p-8 rounded-2xl border border-slate-200">
                             <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white" x-text="entry.title"></h3>
-                                <div class="flex items-center space-x-4 text-sm text-slate-600 dark:text-slate-400">
+                                <h3 class="text-xl font-semibold text-slate-900" x-text="entry.title"></h3>
+                                <div class="flex items-center space-x-4 text-sm text-slate-600">
                                     <span class="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium" x-text="'v' + entry.version"></span>
                                     <span x-text="new Date(entry.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })"></span>
                                 </div>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400" x-text="entry.description"></p>
+                            <p class="text-slate-600" x-text="entry.description"></p>
                         </div>
                     </template>
                 </div>
@@ -573,21 +550,21 @@
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq" class="py-20 lg:py-32 bg-slate-50 dark:bg-slate-800">
+        <section id="faq" class="py-20 lg:py-32 bg-slate-50">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900 dark:text-white">
+                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-slate-900">
                         Frequently asked questions
                     </h2>
                 </div>
-                
+
                 <div class="space-y-4" x-data="{ openFaq: null }">
                     <!-- FAQ 1 -->
-                    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 0 ? null : 0" 
-                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                        <button @click="openFaq = openFaq === 0 ? null : 0"
+                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                                 :aria-expanded="openFaq === 0">
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">What is Vikunja and why do I need it?</h3>
+                            <h3 class="text-lg font-semibold text-slate-900">What is Vikunja and why do I need it?</h3>
                             <svg class="w-5 h-5 text-slate-500 transition-transform" :class="openFaq === 0 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
@@ -596,25 +573,25 @@
                             <p class="text-slate-600 dark:text-slate-400">Vikunja is an open-source, self-hosted task management platform. Kuna connects to your Vikunja instance to sync tasks while keeping your data private and under your control.</p>
                         </div>
                     </div>
-                    
+
                     <!-- FAQ 2 -->
-                    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 1 ? null : 1" 
-                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                        <button @click="openFaq = openFaq === 1 ? null : 1"
+                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                                 :aria-expanded="openFaq === 1">
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">How does calendar sync work?</h3>
+                            <h3 class="text-lg font-semibold text-slate-900">How does calendar sync work?</h3>
                             <svg class="w-5 h-5 text-slate-500 transition-transform" :class="openFaq === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
                         <div x-show="openFaq === 1" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="px-8 pb-6">
-                            <p class="text-slate-600 dark:text-slate-400">Kuna uses EventKit to bidirectionally sync your tasks with your iOS calendar. Tasks with due dates appear as calendar events, and changes in either app are reflected in both places.</p>
+                            <p class="text-slate-600">Kuna uses EventKit to bidirectionally sync your tasks with your iOS calendar. Tasks with due dates appear as calendar events, and changes in either app are reflected in both places.</p>
                         </div>
                     </div>
-                    
+
                     <!-- FAQ 3 -->
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 2 ? null : 2" 
+                        <button @click="openFaq = openFaq === 2 ? null : 2"
                                 class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                                 :aria-expanded="openFaq === 2">
                             <h3 class="text-lg font-semibold text-slate-900 dark:text-white">What iOS versions are supported?</h3>
@@ -626,25 +603,25 @@
                             <p class="text-slate-600 dark:text-slate-400">Kuna requires iOS 18.4 or later. It's built with SwiftUI and takes advantage of the latest iOS features for the best experience.</p>
                         </div>
                     </div>
-                    
+
                     <!-- FAQ 4 -->
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 3 ? null : 3" 
-                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                        <button @click="openFaq = openFaq === 3 ? null : 3"
+                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                                 :aria-expanded="openFaq === 3">
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Is my data private and secure?</h3>
+                            <h3 class="text-lg font-semibold text-slate-900">Is my data private and secure?</h3>
                             <svg class="w-5 h-5 text-slate-500 transition-transform" :class="openFaq === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
                         <div x-show="openFaq === 3" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="px-8 pb-6">
-                            <p class="text-slate-600 dark:text-slate-400">Absolutely. Kuna connects directly to your self-hosted Vikunja instance. We don't store, track, or have access to your task data. Everything stays on your servers.</p>
+                            <p class="text-slate-600">Absolutely. Kuna connects directly to your self-hosted Vikunja instance. We don't store, track, or have access to your task data. Everything stays on your servers.</p>
                         </div>
                     </div>
-                    
+
                     <!-- FAQ 5 -->
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 4 ? null : 4" 
+                        <button @click="openFaq = openFaq === 4 ? null : 4"
                                 class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                                 :aria-expanded="openFaq === 4">
                             <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Can I use it offline?</h3>
@@ -656,33 +633,18 @@
                             <p class="text-slate-600 dark:text-slate-400">Yes. Kuna caches your tasks locally so you can view and manage them offline. Changes will sync when you're back online.</p>
                         </div>
                     </div>
-                    
+
                     <!-- FAQ 6 -->
                     <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 5 ? null : 5" 
+                        <button @click="openFaq = openFaq === 5 ? null : 5"
                                 class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                                 :aria-expanded="openFaq === 5">
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">When will it be available?</h3>
+                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Is Kuna part of the Vikunja project?</h3>
                             <svg class="w-5 h-5 text-slate-500 transition-transform" :class="openFaq === 5 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
                         <div x-show="openFaq === 5" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="px-8 pb-6">
-                            <p class="text-slate-600 dark:text-slate-400">Kuna is currently in development. A public TestFlight build will be available soon for early access. You can also follow progress on GitHub.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- FAQ 7 -->
-                    <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                        <button @click="openFaq = openFaq === 6 ? null : 6" 
-                                class="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
-                                :aria-expanded="openFaq === 6">
-                            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Is Kuna part of the Vikunja project?</h3>
-                            <svg class="w-5 h-5 text-slate-500 transition-transform" :class="openFaq === 6 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <div x-show="openFaq === 6" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="px-8 pb-6">
                             <p class="text-slate-600 dark:text-slate-400">No. Kuna is an independent iOS app that connects to your Vikunja instance. We're not affiliated with the official Vikunja project, but we love what they've built and designed Kuna to work seamlessly with it.</p>
                         </div>
                     </div>
@@ -708,9 +670,22 @@
                                 <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                             </svg>
                         </a>
+                        <a href="mailto:support@trykuna.app" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900" aria-label="Email Support">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
+                                <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
+                            </svg>
+                        </a>
                     </div>
+                        <p class="mt-4 text-slate-300">
+                            Help translate Kuna into your language:
+                            <a href="https://crwd.in/kuna-app/14b411de2052ab822f3de1198f1444c62539040" class="underline hover:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900 rounded">
+                                Join the translation effort
+                            </a>.
+                        </p>
+
                 </div>
-                
+
                 <!-- Links -->
                 <div>
                     <h3 class="font-semibold mb-4">Product</h3>
@@ -720,7 +695,7 @@
                         <li><a href="https://github.com/trykuna" class="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-slate-900 rounded">GitHub</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h3 class="font-semibold mb-4">Legal</h3>
                     <ul class="space-y-3 text-slate-300">
@@ -729,9 +704,9 @@
                     </ul>
                 </div>
             </div>
-            
+
             <hr class="border-slate-700 my-8">
-            
+
             <div class="text-center text-slate-400 space-y-2">
                 <p>&copy; 2025 Kuna. All rights reserved.</p>
                 <p class="text-sm">Kuna is an independent project and is not affiliated with, or endorsed by, the Vikunja open-source project.</p>
@@ -764,7 +739,7 @@
     <!-- Plausible Analytics (uncomment and configure domain)
     <script defer data-domain="trykuna.app" src="https://plausible.io/js/script.js"></script>
     -->
-    
+
     <!--
     <!-- Google Analytics 4 (uncomment and add your GA4 measurement ID)
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>

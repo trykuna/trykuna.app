@@ -50,25 +50,10 @@
         }
     </style>
 </head>
-<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300" x-data="{ darkMode: false }" x-init="
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        darkMode = true;
-        document.documentElement.classList.add('dark');
-    }
-    
-    $watch('darkMode', value => {
-        if (value) {
-            document.documentElement.classList.add('dark');
-            localStorage.theme = 'dark';
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.theme = 'light';
-        }
-    });
-">
+<body class="bg-white text-slate-900">
 
     <!-- Header -->
-    <header class="bg-white/95 dark:bg-slate-900/95 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700 sticky top-0 z-50">
+    <header class="bg-white/95 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-4">
@@ -76,39 +61,30 @@
                         <img src="assets/kunalogo_white.png" alt="Kuna" class="h-12 w-auto">
                     </a>
                     <span class="text-slate-400">•</span>
-                    <span class="text-slate-600 dark:text-slate-300">Privacy Policy</span>
+                    <span class="text-slate-600">Privacy Policy</span>
                 </div>
                 
-                <button @click="darkMode = !darkMode" 
-                        class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900"
-                        aria-label="Toggle dark mode">
-                    <svg x-show="!darkMode" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                    </svg>
-                    <svg x-show="darkMode" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                    </svg>
-                </button>
+                
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div class="prose prose-slate dark:prose-invert max-w-none">
-            <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-8">Privacy Policy</h1>
+        <div class="prose prose-slate max-w-none">
+            <h1 class="text-4xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
             
-            <p class="text-lg text-slate-600 dark:text-slate-300 mb-8">
+            <p class="text-lg text-slate-600 mb-8">
                 <strong>Last updated:</strong> 21 August 2025
             </p>
 
-            <p class="text-slate-600 dark:text-slate-400 mb-8">
+            <p class="text-slate-600 mb-8">
                 Kuna ("the App") is a third-party client for <strong>Vikunja</strong>, an open-source task management system. This Privacy Policy explains how the App handles your information.
             </p>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Information Collection and Use</h2>
-                <ul class="text-slate-600 dark:text-slate-400 space-y-2">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Information Collection and Use</h2>
+                <ul class="text-slate-600 space-y-2">
                     <li>• <strong>No account is created with Kuna itself.</strong> The App connects directly to your chosen Vikunja server.</li>
                     <li>• <strong>Account data (such as email, username, password, and tasks)</strong> is stored on the Vikunja server you connect to, not by Kuna.</li>
                     <li>• <strong>Kuna does not operate its own backend.</strong> All data you see in the App comes from, and is saved to, your selected server.</li>
@@ -116,16 +92,16 @@
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Data Stored on Your Device</h2>
-                <ul class="text-slate-600 dark:text-slate-400 space-y-2">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Data Stored on Your Device</h2>
+                <ul class="text-slate-600 space-y-2">
                     <li>• The App stores cached data (such as task lists and project information) locally on your device for performance and offline use.</li>
                     <li>• This data never leaves your device except when syncing with your chosen server.</li>
                 </ul>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Analytics</h2>
-                <ul class="text-slate-600 dark:text-slate-400 space-y-2">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Analytics</h2>
+                <ul class="text-slate-600 space-y-2">
                     <li>• Kuna may collect <strong>anonymous usage statistics</strong> (such as feature usage and error reports) to improve the App.</li>
                     <li>• You can <strong>opt out of analytics at any time</strong> in the App's settings.</li>
                     <li>• No personal task data, server data, or login details are included in analytics.</li>
@@ -133,47 +109,47 @@
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Third-Party Services</h2>
-                <ul class="text-slate-600 dark:text-slate-400 space-y-2">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Third-Party Services</h2>
+                <ul class="text-slate-600 space-y-2">
                     <li>• Kuna relies on the <strong>Vikunja API</strong>. The privacy of your data depends on the server you choose. Please review your server administrator's privacy policy if you are not running your own server.</li>
                 </ul>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Security</h2>
-                <ul class="text-slate-600 dark:text-slate-400 space-y-2">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Security</h2>
+                <ul class="text-slate-600 space-y-2">
                     <li>• Communication with your server is encrypted using HTTPS (if supported by the server).</li>
                     <li>• Kuna does not store your password in plain text; credentials are saved securely in the system keychain.</li>
                 </ul>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Children's Privacy</h2>
-                <p class="text-slate-600 dark:text-slate-400">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Children's Privacy</h2>
+                <p class="text-slate-600">
                     Kuna is not directed to children under the age of 13, and we do not knowingly collect personal information from them.
                 </p>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Your Rights</h2>
-                <p class="text-slate-600 dark:text-slate-400">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Your Rights</h2>
+                <p class="text-slate-600">
                     Because Kuna does not store or control your data, <strong>requests to delete or export your data must be directed to the administrator of your Vikunja server</strong>.
                 </p>
             </section>
 
             <section class="mb-8">
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Changes to This Policy</h2>
-                <p class="text-slate-600 dark:text-slate-400">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Changes to This Policy</h2>
+                <p class="text-slate-600">
                     This Privacy Policy may be updated from time to time. Changes will be reflected in the App and on its App Store listing.
                 </p>
             </section>
 
             <section>
-                <h2 class="text-2xl font-semibold text-slate-900 dark:text-white mb-4">Contact</h2>
-                <p class="text-slate-600 dark:text-slate-400 mb-4">
+                <h2 class="text-2xl font-semibold text-slate-900 mb-4">Contact</h2>
+                <p class="text-slate-600 mb-4">
                     If you have questions about this Privacy Policy, please open an issue on the project's GitHub repository:
                 </p>
-                <p class="text-slate-600 dark:text-slate-400">
+                <p class="text-slate-600">
                     👉 <a href="https://github.com/trykuna" class="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">github.com/trykuna</a>
                 </p>
             </section>
@@ -181,14 +157,14 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-200 dark:border-slate-700 mt-16">
+    <footer class="border-t border-slate-200 mt-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                <span class="font-semibold text-slate-700 dark:text-slate-300">Kuna</span>
-                <div class="flex items-center space-x-6 text-sm text-slate-600 dark:text-slate-400">
-                    <a href="index.html" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Home</a>
-                    <a href="terms.html" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Terms</a>
-                    <a href="mailto:hello@trykuna.app" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-slate-900 rounded">Contact</a>
+                <span class="font-semibold text-slate-700">Kuna</span>
+                <div class="flex items-center space-x-6 text-sm text-slate-600">
+                    <a href="index.html" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Home</a>
+                    <a href="terms.html" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Terms</a>
+                    <a href="mailto:hello@trykuna.app" class="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded">Contact</a>
                 </div>
             </div>
         </div>
